@@ -1,0 +1,14 @@
+sentry-cli工具下载：1. sentry-cli工具：https://github.com/getsentry/sentry-cli/releases/
+
+    上传混淆mapping.txt样例：
+        sentry-cli.exe --url https://client-sentry.mmpls.cc --auth-token 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 upload-proguard -o aoemo -p sentryio_test --app-id com.test.sentryio --version 1.0.0 D:/a_android/android_sdk_demo/SentryIO_Demo/app/build/outputs/mapping/release/mapping.txt
+
+    注意：
+    自建，需要--url标识新地址，--auth-token标识token
+
+    --url:服务器地址
+    --auth-token：令牌
+    -o: 组织
+    -p: 项目
+    --app-id：应用id
+    --version: 版本号

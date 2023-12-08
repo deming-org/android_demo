@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
+
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+
+android {
+    compileSdkVersion 33
+
+//    buildToolsVersion "27.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "android.support.Test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets.main {
+        jniLibs.srcDir "libs"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        debug {
+//            buildConfigField("String","F_VERSION_NAME","\"${defaultConfig.versionName}\"")
+        }
+
+    }
+
+}
+
+dependencies {
+
+}

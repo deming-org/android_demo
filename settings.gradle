@@ -1,0 +1,3 @@
+//rootProject.name = "WebDemo"
+include ':app'
+include ':mylibrary'
