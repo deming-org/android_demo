@@ -44,7 +44,9 @@ jobs:
           gradle-version: 6.5
       
       - name: gradlew打包
-        run: chmod +x gradlew && ./gradlew assembleRelease
+        # run: chmod +x gradlew &&  ./gradlew assembleRelease
+        # run: bash ./gradlew -h
+        run: gradle -h
       
       - name: 其他操作
         run: pwd && ls -t1
