@@ -20,8 +20,8 @@ jobs:
   build:
     name: 编译打包
     runs-on: ubuntu-latest
-    # environment: ${{ inputs.environment != '' && inputs.environment || dev }}  # 这种写法不支持
-    environment: ${{ inputs.environment != '' && inputs.environment || 'dev' }}
+    # environment: ${{ inputs.environment != '' && inputs.environment || 'dev' }}  # 这种写法不支持
+    environment: dev
     steps:
       - name: 打印环境变量
         run: echo -e "\033[36menv:${{ vars.env }}\033[0m"
@@ -40,7 +40,7 @@ jobs:
           gradle-version: 6.5
       
       - name: gradlew打包
-        run: gradlew assembleRelease
+        run: ./gradlew assembleRelease
       
       - name: 其他操作
         run: pwd && ls -t1
