@@ -1,0 +1,45 @@
+name: android_ci_1
+
+on:
+  push:
+    branches: 
+      - main
+    # tags:
+    #   - '*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: '选择环境级别的配置变量'
+        required: true
+        type: environment
+        
+jobs:
+  build:
+    name: 编译打包
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment != '' && inputs.environment || dev }}
+    steps:
+      - name: 打印环境变量
+        run: echo -e "\033[36menv:${{ vars.env }}\033[0m"
+
+      - name: 拉取代码
+        uses: actions/checkout@v4
+      - name: 配置java环境
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
+          
+      - name: 配置Gradle环境
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 6.5
+      
+      - name: gradlew打包
+        run: gradlew assembleRelease
+      
+      - name: 其他操作
+        run: pwd && ls -t1
