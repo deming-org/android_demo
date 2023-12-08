@@ -49,7 +49,12 @@ jobs:
         run: |
           echo -e "gradle版本：$(gradle -v)"
           gradle assembleRelease
-          # bash ./gradlew -h
-      
-      - name: 其他操作
-        run: pwd && [[ -d 'app/build/outputs/apk/release' ]] && ls -t1 app/build/outputs/apk/release
+          pwd && [[ -d 'app/build/outputs/apk/release' ]] && ls -t1 app/build/outputs/apk/release
+    
+      - name: 上传apk
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: artifact-1
+          path: |
+            app/build/outputs/apk/release/app-release.apk
+            app/build/outputs/apk/release/output-metadata.json
