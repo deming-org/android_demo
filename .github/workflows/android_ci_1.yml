@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: 其他操作
-        run: pwd && ls -t1 app/build/outputs/apk/release
+        run: pwd && ls -t1
         
       - name: 配置java环境
         uses: actions/setup-java@v3
@@ -52,4 +52,4 @@ jobs:
           # bash ./gradlew -h
       
       - name: 其他操作
-        run: pwd && ls -t1 app/build/outputs/apk/release
+        run: pwd && [[ -d 'app/build/outputs/apk/release' ]] && ls -t1 app/build/outputs/apk/release
