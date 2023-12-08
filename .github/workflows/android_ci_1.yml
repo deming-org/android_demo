@@ -40,7 +40,7 @@ jobs:
           gradle-version: 6.5
       
       - name: gradlew打包
-        run: ./gradlew assembleRelease
+        run: bash ./gradlew assembleRelease
       
       - name: 其他操作
         run: pwd && ls -t1
