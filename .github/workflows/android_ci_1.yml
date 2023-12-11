@@ -54,7 +54,15 @@ jobs:
       - name: 上传apk
         uses: actions/upload-artifact@v3.1.3
         with:
-          name: artifact-1
+          name: apk_1
           path: |
             app/build/outputs/apk/release/app-release.apk
-            app/build/outputs/apk/release/output-metadata.json
+    
+      - name: 上传json文件
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: json_1
+          path: app/build/outputs/apk/release/output-metadata.json
+
+      - name: 通知
+        run: echo "我是通知操作"
